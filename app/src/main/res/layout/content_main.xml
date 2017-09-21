@@ -7,11 +7,12 @@
     android:layout_height="match_parent"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:context="com.android.umbrella.MainActivity"
+    android:fillViewport="true"
     tools:showIn="@layout/activity_main">
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="100dp"
+        android:layout_height="match_parent"
         android:orientation="vertical">
         <include layout="@layout/weathercard"
             android:id="@+id/card1"/>

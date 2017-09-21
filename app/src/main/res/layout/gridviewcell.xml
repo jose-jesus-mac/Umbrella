@@ -4,7 +4,7 @@
     android:orientation="vertical"
     android:id="@+id/gridcell"
     android:layout_width="wrap_content"
-    android:layout_height="wrap_content">
+    android:layout_height="200dp">
     <TextView
         android:id="@+id/time"
     android:layout_width="match_parent"
@@ -25,6 +25,6 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:gravity="center"
-        android:text="70*"
+        android:text=""
         style="@style/Padding"/>
 </LinearLayout>

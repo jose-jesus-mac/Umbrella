@@ -2,26 +2,30 @@
 <layout xmlns:android="http://schemas.android.com/apk/res/android">
 <android.support.v7.widget.CardView
     android:layout_width="match_parent"
-    android:layout_height="100dp"
+    android:layout_height="200dp"
     android:layout_margin="@dimen/text_margin">
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:showDividers="end"
+        android:divider="@drawable/divider_drawable"
         android:orientation="vertical">
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             style="@style/Padding"
             android:textSize="20dp"
-            android:text="Today"/>
-        <GridView xmlns:android="http://schemas.android.com/apk/res/android"
+            android:text="Today"
+            android:id="@+id/day"/>
+        <GridView
+            android:nestedScrollingEnabled="true"
             android:id="@+id/gridview"
-            android:numColumns="4"
+            android:numColumns="3"
             android:gravity="center"
             android:columnWidth="100dp"
             android:stretchMode="columnWidth"
-            android:layout_width="fill_parent"
-            android:layout_height="fill_parent"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
             />
     </LinearLayout>
 </android.support.v7.widget.CardView>

@@ -1,6 +1,7 @@
-package com.android.umbrella;
+package com.android.umbrella.adapter;
 
 import android.content.Context;
+import android.graphics.PorterDuff;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -8,17 +9,23 @@ import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.android.umbrella.R;
+
 public class GridViewAdapter extends BaseAdapter {
     private Context mContext;
     private final String[] time;
     private final int[] Imageid;
-    private final String[] temp;
+    private final int[] temp;
+    private final int cold;
+    private final int hot;
 
-    public GridViewAdapter(Context c,String[] time,int[] Imageid, String[] temp ) {
+    public GridViewAdapter(Context c,String[] time,int[] Imageid, int[] temp,int poshot, int poscold ) {
         mContext = c;
         this.Imageid = Imageid;
         this.time = time;
         this.temp = temp;
+        this.hot=poshot;
+        this.cold=poscold;
     }
 
     @Override
@@ -44,6 +51,10 @@ public class GridViewAdapter extends BaseAdapter {
 
         if (convertView == null) {
 
+            int coldColor = mContext.getResources().getColor(R.color.weather_cool);
+            int hotColor = mContext.getResources().getColor(R.color.weather_warm);
+
+
             grid = new View(mContext);
             grid = inflater.inflate(R.layout.gridviewcell, null);
             TextView textView = (TextView) grid.findViewById(R.id.time);
@@ -51,12 +62,31 @@ public class GridViewAdapter extends BaseAdapter {
             TextView textView1 = (TextView) grid.findViewById(R.id.temperature);
             textView.setText(time[position]);
             imageView.setImageResource(Imageid[position]);
-            textView1.setText(temp[position]);
-        } else {
+            if(cold==position) {
+                textView.setTextColor(coldColor);
+                textView1.setTextColor(coldColor);
+                imageView.setColorFilter(coldColor, PorterDuff.Mode.SRC_IN);
+            }else if(hot==position){
+                textView.setTextColor(hotColor);
+                textView1.setTextColor(hotColor);
+                imageView.setColorFilter(hotColor, PorterDuff.Mode.SRC_IN);
+            }
+            if(temp[position]!=0) {
+                textView1.setText(String.valueOf(temp[position]));
+            }
+            } else {
             grid = (View) convertView;
         }
 
         return grid;
     }
+    @Override
+    public boolean areAllItemsEnabled() {
+        return false;
+    }
 
+    @Override
+    public boolean isEnabled(int position) {
+        return false;
+    }
 }
