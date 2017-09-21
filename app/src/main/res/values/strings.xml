@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">Umbrella</string>
+    <string name="URLcall">
+        http://api.wunderground.com/api/5b4be481d919b50c/hourly10day/q/98103.json
+    </string>
+    <string name="action_settings">Settings</string>
+</resources>
